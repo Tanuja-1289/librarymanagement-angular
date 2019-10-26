@@ -4,10 +4,10 @@
         <div class="alert alert-danger" *ngIf='error'></div>
         <form #deleteBooksForm='ngForm' (ngSubmit)="delete(deleteBooksForm)">
             <div class="form-group">
-                <input type="text" name="book_id" #book_id='ngModel' ngModel class="form-control mb-3" required
+                <input type="text" name="bookId" #bookId='ngModel' ngModel class="form-control mb-3" required
                     placeholder="Enter the Id..">
-                <div *ngIf="book_id.touched && book_id.invalid">
-                    <p class="text-danger" *ngIf="book_id.errors.required">
+                <div *ngIf="bookId.touched && bookId.invalid">
+                    <p class="text-danger" *ngIf="bookId.errors.required">
                         *this field is required
                     </p>
                 </div>
