@@ -1,0 +1,51 @@
+<div class="col-md-4 offset-md-4 mt-5 card card-body mt-5">
+    <h4 class="center border-bottom">Issue Book</h4>
+    <div class="alert alert-danger" *ngIf='error'></div>
+    <form #issueBookForm='ngForm' (ngSubmit)="issueBook(issueBookForm)" *ngIf="!isloading">
+
+        <div class="form-group">
+            <input type="text" name="registration_id" #registration_id='ngModel' ngModel class="form-control mb-3" required
+                placeholder="Enter the Id..">
+                <div *ngIf="registration_id.touched && registration_id.invalid">
+                    <p class="alert alert-danger" *ngIf="registration_id.errors.required"> This field is required</p>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="book_id" #book_id='ngModel' ngModel class="form-control mb-3" required
+                placeholder="Enter the Id..">
+                <div *ngIf="book_id.touched && book_id.invalid">
+                    <p class="alert alert-danger" *ngIf="book_id.errors.required"> This field is required</p>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="user_id" #user_id='ngModel' ngModel class="form-control mb-3" required
+                placeholder="Enter the Id..">
+                <div *ngIf="user_id.touched && user_id.invalid">
+                    <p class="alert alert-danger" *ngIf="user_id.errors.required"> This field is required</p>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <input type="date" name="issue_date" #issue_date='ngModel' ngModel class="form-control mb-3" required
+                placeholder="Enter the issue date..">
+                <div *ngIf="issue_date.touched && issue_date.invalid">
+                    <p class="alert alert-danger" *ngIf="issue_date.errors.required"> This field is required</p>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <input type="date" name="return_date" #return_date='ngModel' ngModel class="form-control mb-3" required
+                placeholder="Enter the return date..">
+                <div *ngIf="return_date.touched && return_date.invalid">
+                    <p class="alert alert-danger" *ngIf="return_date.errors.required"> This field is required</p>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-primary float-left">Submit</button>
+        </div>
+    </form>
+</div>
+

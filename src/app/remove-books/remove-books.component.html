@@ -1,0 +1,20 @@
+<div class="col-md-4 offset-md-4 mt-5 card card-body mt-5">
+    <div class="form-group container">
+        <h4 class="center border-bottom">Login Form</h4>
+        <div class="alert alert-danger" *ngIf='error'></div>
+        <form #deleteBooksForm='ngForm' (ngSubmit)="delete(deleteBooksForm)">
+            <div class="form-group">
+                <input type="text" name="book_id" #book_id='ngModel' ngModel class="form-control mb-3" required
+                    placeholder="Enter the Id..">
+                <div *ngIf="book_id.touched && book_id.invalid">
+                    <p class="text-danger" *ngIf="book_id.errors.required">
+                        *this field is required
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-primary float-left">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
