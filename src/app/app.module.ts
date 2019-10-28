@@ -8,8 +8,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
-import { RegisterStudentComponent } from './register-student/register-student.component';
-import { UpdateUserComponent } from './update-user/update-user.component';
+import { RegisterStudentComponent } from './add-student/add-student.component';
 import { RemoveUserComponent } from './remove-user/remove-user.component';
 import { AddBooksComponent } from './add-books/add-books.component';
 import { UpdateBooksComponent } from './update-books/update-books.component';
@@ -27,7 +26,6 @@ import { ShowAllLibrarianComponent } from './show-all-librarian/show-all-librari
     LoginComponent,
     HeaderComponent,
     RegisterStudentComponent,
-    UpdateUserComponent,
     RemoveUserComponent,
     AddBooksComponent,
     UpdateBooksComponent,
@@ -46,7 +44,7 @@ import { ShowAllLibrarianComponent } from './show-all-librarian/show-all-librari
     RouterModule.forRoot([
       {path:'',component:LoginComponent},
       {path:'register-student',component:RegisterStudentComponent},
-      {path:'update-user',component:UpdateUserComponent},
+      
       {path:'remove-user',component:RemoveUserComponent},
       {path:'add-books',component:AddBooksComponent},
       {path:'update-books',component:UpdateBooksComponent},
