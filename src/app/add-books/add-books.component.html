@@ -1,70 +1,94 @@
-<div class="col-md-4 offset-md-4 mt-5 card card-body mt-5">
-    <h4 class="center border-bottom">Add Books</h4>
-    <div class="alert alert-danger" *ngIf='error'></div>
-    <form #addBooksForm='ngForm' (ngSubmit)="addBooks(addBooksForm)">
+<div style="background-image:url('/assets/images/DoctorImage.jpg'); background-size: cover; height:px ">
 
-        <div class="form-group">
-            <input type="text" name="book_id" #book_id='ngModel' ngModel class="form-control mb-3" required
-                placeholder="Enter the Id..">
-                <div *ngIf="book_id.touched && book_id.invalid">
-                    <p class="text-danger" *ngIf="book_id.errors.required">
-                        *this field is required
-                    </p>
+    <div class="card  text-black">
+            <img class="card-img" src="https://cdn.pixabay.com/photo/2019/02/12/12/32/library-3992076_960_720.jpg" alt="Card image"
+            style="border-style: none; border-width: 0px"> 
+        <div class="card-img-overlay">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="col-md-4 offset-md-4 mt-5 mb-4 card card-body"
+                            style="background:rgba(243, 246, 247, 0.897)">
+                            <h3 class="sign-up-title font-weight-bolder font-italic"
+                                style="color:dimgray; text-align: center">Add Books</h3>
+                            <h6 class="text-danger float-right">*Required fields</h6>
+                            <hr class="clorograph">
+                            <form action="" #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)" method="POST"
+                                role="form">
+
+                                <div class="form-group mt-2">
+                                    <label for="bookId">Book ID<h6 class="text-danger float-right ">*</h6></label>
+                                    <input type="number" name="bookId" required placeholder="Enter Book ID" class="form-control"
+                                        #bookId="ngModel" ngModel>
+                                    <div *ngIf="bookId.invalid && bookId.touched">
+                                        <p *ngIf="bookId.errors.required" class="text-danger">
+                                            *This field is mandatory
+                                    </div>
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <label for="bookName">Name<h6 class="text-danger float-right ">*</h6></label>
+                                    <input type="text" name="bookName" required placeholder="Enter Book Name" class="form-control"
+                                        #bookName="ngModel" ngModel>
+                                    <div *ngIf="bookName.invalid && bookName.touched">
+                                        <p *ngIf="bookName.errors.required" class="text-danger">
+                                            *This field is mandatory
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group mt-2">
+                                    <label for="firstAuthor">First Author Name<h6 class="text-danger float-right ">*</h6></label>
+                                    <input type="text" name="firstAuthor" required placeholder="Enter First Author Name" class="form-control"
+                                        #firstAuthor="ngModel" ngModel>
+                                    <div *ngIf="firstAuthor.invalid && firstAuthor.touched">
+                                        <p *ngIf="firstAuthor.errors.required" class="text-danger">
+                                            *This field is mandatory
+                                    </div>
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <label for="secondAuthor">Second Author Name<h6 class="text-danger float-right ">*</h6></label>
+                                    <input type="text" name="secondAuthor" required placeholder="Enter second Author Name" class="form-control"
+                                        #secondAuthor="ngModel" ngModel>
+                                    <div *ngIf="secondAuthor.invalid && secondAuthor.touched">
+                                        <p *ngIf="secondAuthor.errors.required" class="text-danger">
+                                            *This field is mandatory
+                                    </div>
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <label for="publisher">Publisher Name<h6 class="text-danger float-right ">*</h6></label>
+                                    <input type="text" name="publisher" required placeholder="Enter second Author Name" class="form-control"
+                                        #publisher="ngModel" ngModel>
+                                    <div *ngIf="publisher.invalid && publisher.touched">
+                                        <p *ngIf="publisher.errors.required" class="text-danger">
+                                            *This field is mandatory
+                                    </div>
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <label for="yearOfPublication">Year Of Publication<h6 class="text-danger float-right ">*</h6></label>
+                                    <input type="text" name="yearOfPublication" required placeholder="Enter second Author Name" class="form-control"
+                                        #yearOfPublication="ngModel" ngModel>
+                                    <div *ngIf="yearOfPublication.invalid && yearOfPublication.touched">
+                                        <p *ngIf="yearOfPublication.errors.required" class="text-danger">
+                                            *This field is mandatory
+                                    </div>
+                                </div>
+
+                                
+                    
+                    <div class="btn-group float-right">
+                        <button type="submit" [disabled]="registerForm.invalid"
+                            class="btn btn-outline-success ">Add Book
+                        </button>
+                    </div>
+                    </form>
                 </div>
+            </div>
         </div>
-
-        <div class="form-group">
-            <input type="text" name="book_name" #book_name='ngModel' ngModel class="form-control mb-3" required
-                placeholder="Enter the name..">
-                <div *ngIf="book_name.touched && book_name.invalid">
-                    <p class="text-danger" *ngIf="book_name.errors.required">
-                        *this field is required
-                    </p>
-                </div>
-        </div>
-
-        <div class="form-group">
-            <input type="text" name="author1" #author1='ngModel' ngModel class="form-control mb-3" required
-                placeholder="Enter the author1 name...">
-                <div *ngIf="author1.touched && author1.invalid">
-                    <p class="text-danger" *ngIf="author1.errors.required">
-                        *this field is required
-                    </p>
-                </div>
-        </div>
-
-        <div class="form-group">
-            <input type="text" name="author2" #author2='ngModel' ngModel class="form-control mb-3" required
-                placeholder="Enter the author2..">
-                <div *ngIf="author2.touched && author2.invalid">
-                    <p class="text-danger" *ngIf="author2.errors.required">
-                        *this field is required
-                    </p>
-                </div>
-        </div>
-
-        <div class="form-group">
-            <input type="text" name="publisher" #publisher='ngModel' ngModel class="form-control mb-3" required
-                placeholder="Enter the publisher..">
-                <div *ngIf="publisher.touched && publisher.invalid">
-                    <p class="text-danger" *ngIf="publisher.errors.required">
-                        *this field is required
-                    </p>
-                </div>
-        </div>
-
-        <div class="form-group">
-            <input type="text" name="yearofpublication" #yearofpublication='ngModel' ngModel class="form-control mb-3" required
-                placeholder="Enter the yearofpublication..">
-                <div *ngIf="yearofpublication.touched && yearofpublication.invalid">
-                    <p class="text-danger" *ngIf="yearofpublication.errors.required">
-                        *this field is required
-                    </p>
-                </div>
-        </div>
-
-        <div class="form-group">
-            <button type="submit" class="btn btn-outline-primary float-left">Submit</button>
-        </div>
-    </form>
+    </div>
+</div>
+</div>
 </div>

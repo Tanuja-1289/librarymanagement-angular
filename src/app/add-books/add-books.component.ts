@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-books',
@@ -10,14 +10,20 @@ import { Router } from '@angular/router';
 })
 export class AddBooksComponent implements OnInit {
 
-  constructor(private auth:AuthService, private router:Router) { }
-addBooks(addBooksForm:NgForm) {
-  this.auth.addBooks(addBooksForm.value).subscribe(data=>{
-    console.log(data);
-    addBooksForm.reset();
-  });
-}
+  constructor(private http: HttpClient,
+              private service: AuthService) { }
+
   ngOnInit() {
+  }
+
+  onRegister(registerForm: NgForm) {
+      console.log(registerForm.value);
+      this.http.post('http://localhost:8080/librarian/addNewBook', registerForm.value).subscribe(response => {
+        registerForm.reset();
+        if (response) {
+          alert('Book Added');
+        }
+      });
   }
 
 }

@@ -1,50 +1,37 @@
-import { HttpClient } from '@angular/common/http';
-import { User } from './user';
 import { Injectable } from '@angular/core';
-import { Books } from './books';
-import { Requests } from './request-book';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class AuthService {
-    
-    constructor(private httpClient:HttpClient){}
-    login(userDetails){
-        return this.httpClient.post<User>(``,userDetails)
-    }
 
-    register(userDetails){
-        return this.httpClient.post<User>(``,userDetails);
+  baseUrl = 'http://localhost:8080/';
+  isALoggedIn = false;
+  isLLoggedIn = false;
+  isSLoggedIn = false;
+  home = true;
+
+  constructor(private http: HttpClient) { }
+
+  isAdminLoggedIn() {
+    if (this.isALoggedIn) {
+      return true;
     }
-    updateUser(userDetails){
-        return this.httpClient.post<User>(``,userDetails);
+    return false;
+  }
+
+  isLibrarianLoggedIn() {
+    if (this.isLLoggedIn) {
+      return true;
     }
-    addBooks(books){
-        return this.httpClient.post<Books>(``,books);
+    return false;
+  }
+
+  isStudentLoggedIn() {
+    if (this.isSLoggedIn) {
+      return true;
     }
-    updateBook(bookDetails){
-        return this.httpClient.post<Books>(``,bookDetails);
-    }
-    requestBook(books){
-        return this.httpClient.post<Requests>(``,books);
-    }
-    issueBook(book){
-        return this.httpClient.post<Requests>(``,book);
-    }
-    deleteBook(bookDetails){
-        return this.httpClient.post<Books>(``,bookDetails);
-    }
-    deleteUser(userDetails){
-        return this.httpClient.post<User>(``,userDetails);
-    }
-    getAllBooks(bookDetails){
-        return this.httpClient.post<Books>(``,bookDetails);
-    }
-    getAllUsers(userDetails){
-        return this.httpClient.post<User>(``,userDetails);
-    }
-    getAllIssuedBooks(issueBook){
-        return this.httpClient.post<Books>(``,issueBook);
-    }
+    return false;
+  }
 }

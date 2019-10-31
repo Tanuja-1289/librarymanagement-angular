@@ -1,0 +1,103 @@
+<div>
+    <div class="card  text-white">
+      <img class="card-img" src="https://cdn.pixabay.com/photo/2019/02/12/12/32/library-3992076_960_720.jpg" alt="Card image"
+        style="border-style: none; border-width: 0px">
+      <div class="card-img-overlay">
+  
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h4 *ngIf="userService.users != null" class=" card card-body col-md-4 offset-md-4 text-center mt-4 font-weight-bolder font-italic"
+                style="background-image: url(https://image.shutterstock.com/image-photo/black-cracked-texture-can-be-260nw-263213627.jpg); color: rgb(19, 17, 18);">
+                User Details</h4>
+                <h4 *ngIf="userService.users == null" class=" card card-body col-md-4 offset-md-4 text-center mt-4 font-weight-bolder font-italic"
+                style="background-image: url(https://image.shutterstock.com/image-photo/black-cracked-texture-can-be-260nw-263213627.jpg); color: rgb(24, 21, 23);">
+                Data is not found</h4>
+              <div class="container ">
+                <table class="table table-bordered mt-2 table-hover table-striped"
+                  style="border-style:dotted; border-width: 1px;">
+                  <thead
+                    style="background-image: url(https://cdn.pixabay.com/photo/2016/03/26/22/21/books-1281581__340.jpg);">
+                    <tr class="text-center text-primary" *ngIf="userService.users != null">
+                      <th>Id</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Update</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    style="background-color: white;">
+                    <tr *ngFor="let user of userService.users" style="color:warning" class="text-center">
+                      <td>{{user.id}}</td>
+                      <td>{{user.name}}</td>
+                      <td>{{user.emailId}}</td>
+                      <td><button type="button" class="btn btn-outline-primary"
+                        data-toggle="modal" (click)="selectUser(user)"
+                        data-target="#modal">Update </button>
+                    </td>
+                      <td><button class="btn btn-outline-danger btn-block" (click)="deleteUser(user)">Remove </button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalLabel">Update User</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body" style="color:black">
+                        <form action="" #updateForm="ngForm" (ngSubmit)="updateUser(updateForm)" method="PUT"
+                        role="form">
+                        <div class="form-group mt-2">
+                            <label for="id" >ID<h6 class="text-danger float-right ">*</h6></label>
+                            <input readonly name="id" #id="ngModel" 
+                            [(ngModel)]='selectedUser.id'>
+                        </div>
+                        
+                        <div class="form-group mt-2">
+                            <label for="name">Name<h6 class="text-danger float-right ">*</h6></label>
+                                <input type="text" name="name" required placeholder="Enter Your Name" class="form-control"
+                                #name="ngModel" [(ngModel)]="selectedUser.name">
+                                <div *ngIf="name.invalid && name.touched">
+                                    <p *ngIf="name.errors.required" class="text-danger">
+                                        *This field is mandatory
+                                </div>
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="emailId">Email<h6 class="text-danger float-right ">*</h6></label>
+                                <input type="email" name="emailId" required placeholder="Enter Your Email" class="form-control"
+                                    #emailId="ngModel" [(ngModel)]="selectedUser.emailId">
+                                <div *ngIf="emailId.invalid && emailId.touched">
+                                    <p *ngIf="emailId.errors.required" class="text-danger">
+                                        *This field is mandatory
+                                </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password<h6 class="text-danger float-right ">*</h6></label>
+                                <input type="password" name="password" required placeholder="Enter Password"
+                                    class="form-control" #password="ngModel" ngModel>
+                                <div *ngIf="password.invalid && password.touched">
+                                    <p *ngIf="password.errors.required" class="text-danger">
+                                        *This field is mandatory
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" [disabled]="updateForm.invalid" class="btn btn-primary">Save changes</button>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>

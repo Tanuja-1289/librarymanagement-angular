@@ -1,31 +1,53 @@
-<div class="col-md-4 offset-md-4 mt-5 card card-body mt-5">
-    <div class="form-group container">
-        <h4 class="center border-bottom" class="text-success">SignIn</h4>
-        <div class="alert alert-danger" *ngIf='error'></div>
-        <form #loginForm='ngForm' (ngSubmit)="login(loginForm)" *ngIf="!isloading">
-            <div class="form-group">
-                <label for="UserName" class="text-info">User name<h6 class="text-danger float-right">*</h6></label>
-                <input type="text" name="username" #username='ngModel' ngModel class="form-control mb-3" required
-                    placeholder="Enter user name..">
-                <div *ngIf="username.touched && usernme.invalid">
-                    <p class="text-danger" *ngIf="username.errors.required">
-                        *This field is required.Please Insert!!..
-                    </p>
+<div class="card  text-black">
+    <img class="card-img" src="https://cdn.pixabay.com/photo/2018/07/11/16/53/book-3531412__340.jpg"
+        alt="Card image" style="border-style: none; border-width: 0px " height="480px" width="420px">
+    <div class="card-img-overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="col-md-6 offset-md-3 mt-4 mb-5 card card-body">
+                        
+                        <h3 class="sign-up-title font-weight-bolder font-italic"
+                            style="color:rgb(134, 130, 130); text-align: center">Welcome to LMS..!Please Login</h3>
+                        <h6 class="text-danger">*Mandatory fields</h6>
+                        <hr class="clorograph">
+
+                        <form action="" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" method="POST"
+                            role="form">
+
+                            <div class="form-group mt-2">
+                                <label for="id">User Id<h6 class="text-danger float-right ">*</h6></label>
+                                <input type="number" name="id" required placeholder="Enter Id.." class="form-control"
+                                    #id="ngModel" ngModel>
+                                <div *ngIf="id.invalid && id.touched">
+                                    <p *ngIf="id.errors.required" class="text-danger">
+                                        *This field is required
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password<h6 class="text-danger float-right ">*</h6></label>
+                                <input type="password" name="password" required placeholder="Enter Password"
+                                    minlength="8" class="form-control" #password="ngModel" ngModel>
+                                <div *ngIf="password.invalid && password.touched">
+                                    <p *ngIf="password.errors.required" class="text-danger">
+                                        *This field is required
+                                </div>
+                            </div>
+
+                            <div class="checkbox" style="width:180px;">
+                                <label><input name="remember" type="checkbox" value="Remember Me"> Remember
+                                    Me</label>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" [disabled]="loginForm.invalid"
+                                    class="btn btn-outline-success float-right">Login</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="password" class="text-info">Password<h6 class="text-danger float-right">*</h6></label>
-                <input type="password"name="password" #password='ngModel' ngModel class="form-control mb-3" required
-                    placeholder="Enter the password...">
-                    <div *ngIf="password.touched && password.invalid">
-                        <p class="text-danger" *ngIf="password.errors.required">
-                            *This field is required.Please Insert!!..
-                        </p>
-                    </div>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-outline-secondary float-right">Submit</button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>

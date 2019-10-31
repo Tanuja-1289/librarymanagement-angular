@@ -1,62 +1,44 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
-import { RegisterStudentComponent } from './add-student/add-student.component';
-import { RemoveUserComponent } from './remove-user/remove-user.component';
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RouterModule } from '@angular/router';
+import { FormsModule} from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 import { AddBooksComponent } from './add-books/add-books.component';
-import { UpdateBooksComponent } from './update-books/update-books.component';
-import { RemoveBooksComponent } from './remove-books/remove-books.component';
-import { GetIssuedBooksComponent } from './get-issued-books/get-issued-books.component';
-import { RequestBookComponent } from './request-book/request-book.component';
-import { IssueBookComponent } from './issue-book/issue-book.component';
-import { ShowAllUsersComponent } from './show-all-users/show-all-users.component';
-import { ShowAllLibrarianComponent } from './show-all-librarian/show-all-librarian.component';
-
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { SearchBookComponent } from './search-book/search-book.component';
+import { RequestedBookComponent } from './requested-book/requested-book.component';
+import { ResponseBookComponent } from './response-book/response-book.component';
+import { SearchUserComponent } from './search-user/search-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     HeaderComponent,
-    RegisterStudentComponent,
-    RemoveUserComponent,
+    FooterComponent,
+    HomeComponent,
+    LoginComponent,
     AddBooksComponent,
-    UpdateBooksComponent,
-    RemoveBooksComponent,
-    GetIssuedBooksComponent,
-    RequestBookComponent,
-    IssueBookComponent,
-    ShowAllUsersComponent,
-    ShowAllLibrarianComponent,
-    
+    PageNotFoundComponent,
+    AddUserComponent,
+    SearchBookComponent,
+    RequestedBookComponent,
+    ResponseBookComponent,
+    SearchUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot([
-      {path:'',component:LoginComponent},
-      {path:'register-student',component:RegisterStudentComponent},
-      
-      {path:'remove-user',component:RemoveUserComponent},
-      {path:'add-books',component:AddBooksComponent},
-      {path:'update-books',component:UpdateBooksComponent},
-      {path:'remove-books',component:RemoveBooksComponent},
-      {path:'request-book',component:RequestBookComponent},
-      {path:'get-issued-books',component:GetIssuedBooksComponent},
-      {path:'show-all-librarian',component:ShowAllLibrarianComponent},
-      {path:'show-all-users',component:ShowAllUsersComponent},
-      {path:'issue-book',component:IssueBookComponent},
-    ]),
-      ReactiveFormsModule,
-      HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

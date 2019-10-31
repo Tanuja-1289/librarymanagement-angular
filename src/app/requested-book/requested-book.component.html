@@ -1,0 +1,48 @@
+<div>
+    <div class="card  text-white">
+        <img class="card-img" src="https://cdn.pixabay.com/photo/2019/02/12/12/32/library-3992076_960_720.jpg" alt="Card image"
+        style="border-style: none; border-width: 0px">
+      <div class="card-img-overlay">
+  
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h4 *ngIf="bookRegisterService.books != null" class=" card card-body col-md-4 offset-md-4 text-center mt-4 font-weight-bolder font-italic"
+                style="background-image: url(https://cdn.pixabay.com/photo/2015/10/31/12/31/books-1015594__340.jpg); color: rgb(241, 229, 236);">
+                Registration Details</h4>
+                <h4 *ngIf="bookRegisterService.books == null" class=" card card-body col-md-4 offset-md-4 text-center mt-4 font-weight-bolder font-italic"
+                style="background-image: url(https://cdn.pixabay.com/photo/2015/11/08/23/54/girl-1034421__340.jpg); color: rgb(241, 229, 236);">
+                No Record Found</h4>
+              <div class="container ">
+                <table class="table table-bordered mt-2 table-hover table-striped"
+                  style="border-style: solid; border-width: 1px;">
+                  <thead
+                    style="background-image: url(https://cdn.pixabay.com/photo/2014/08/11/11/50/full-moon-415501__340.jpg);">
+                    <tr class="text-center text-warning" *ngIf="bookRegisterService.books != null">
+                      <th>Registration Id</th>
+                      <th>User Id</th>
+                      <th>Book ID</th>
+                      <th>Date Of Registration</th>
+                      <th *ngIf="isLLoggedIn">Accept Request</th>
+                      <th>Cancel Request</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    style="background-image: url(https://cdn.pixabay.com/photo/2014/08/11/11/50/full-moon-415501__340.jpg);">
+                    <tr *ngFor="let books of bookRegisterService.books" style="color: rgb(239, 243, 7);" class="text-center">
+                      <td>{{books.registrationId}}</td>
+                      <td>{{books.userId}}</td>
+                      <td>{{books.bookId}}</td>
+                      <td>{{books.registrationDate}}</td>
+                      <td *ngIf="isLLoggedIn"><button class="btn btn-outline-success btn-blockr" (click)="acceptRequest(books)">Accept</button></td>
+                      <td ><button class="btn btn-outline-danger btn-blockr" (click)="cancelRequest(books)">Cancel</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
